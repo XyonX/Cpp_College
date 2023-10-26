@@ -154,7 +154,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Array_2D.cpp" />
     <ClCompile Include="CPP_College.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Array_1D.Cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
