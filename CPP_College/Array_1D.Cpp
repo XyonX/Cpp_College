@@ -26,9 +26,14 @@ void Increase_Array_Size ( int existing_array [] , int new_array [] )
     
 }
 
+//Getting the address of an array element by index
+// add = baseaddress + (index*data type size)
+// base adddress = address of the first element ( element 0 )
 
 
 
+
+/*
 int main ()
 {
 
@@ -40,4 +45,4 @@ int main ()
     //After we done with the array we delete the memory allocation
     free(heapArray);
     
-}
+}*/

@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="Array_2D.cpp" />
     <ClCompile Include="CPP_College.cpp" />
+    <ClCompile Include="Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Array_1D.Cpp" />
