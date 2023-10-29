@@ -157,6 +157,7 @@
     <ClCompile Include="Array_2D.cpp" />
     <ClCompile Include="Array_Operations.cpp" />
     <ClCompile Include="CPP_College.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
