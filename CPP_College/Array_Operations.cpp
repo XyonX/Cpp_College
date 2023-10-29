@@ -1,7 +1,7 @@
 ﻿
 
-int main ()
 
+int Linear_Search ()
 {
     int Demo_Array [10];
 
@@ -9,21 +9,52 @@ int main ()
 
     
     //Linear Search
-    int LookupElement = 3;
+    int key = 3;
     for (int i = 0 ; i <ArraySize; i++ )
     {
-        if(i == LookupElement)
+        if(i == key)
         {
             return i;
         }
-        else
-        {
-            return -1;
-        }
             
     }
+    return -1;
+    //best - O(1) , Worst - O (n)
+    
+}
 
-    //
+int Binary_Search ()
+{
+    int key ;
+    int l,h,mid;
+
+    while (l<=h)
+    {
+        mid = l+h/2;
+
+        if(key==mid)
+        {
+            return mid;
+        }
+        else if ( key < mid)
+        {
+            h = mid-1;
+        }
+        else
+        {
+            l = mid+1;
+        }
+        
+    }
+    
+}
+
+int main ()
+
+{
+
+
+    //Binary Search
 
 
 }
