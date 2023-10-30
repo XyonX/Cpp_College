@@ -43,58 +43,58 @@ but you can't directly return arrays from functions.
 //4 Columns
 // In Heap
 
-int main ()
+class Array_1D
 {
-
-
-
-    int NumOfRows=3;
-    int NumOfColumns=4;
-
-    int* Arr2D_Heap [3];
-
-
-    for ( int i = 0 ; i < NumOfRows ; i++ )
+    Array_1D()
     {
-        int*Row = (int*) malloc(NumOfColumns*sizeof(int));
-        Arr2D_Heap[i] = Row;
+        int NumOfRows=3;
+        int NumOfColumns=4;
+
+        int* Arr2D_Heap [3];
+
+
+        for ( int i = 0 ; i < NumOfRows ; i++ )
+        {
+            int*Row = (int*) malloc(NumOfColumns*sizeof(int));
+            Arr2D_Heap[i] = Row;
         
-    }
+        }
 
-    int*Array_2D [3];
+        int*Array_2D [3];
 
-    //Creating the actual array
-    for (int i = 0 ; i<3 ; i++)
-    {
-        Array_2D[i] = (int*) malloc(4*sizeof(int));
-    }
-
-    //Iterating over all the elements To WRITE
-    for (int i =0; i <3 ; i++)
-    {
-
-        for (int j=0 ; j<4 ; j++)
+        //Creating the actual array
+        for (int i = 0 ; i<3 ; i++)
         {
-            Array_2D[i][j] = i*j;
+            Array_2D[i] = (int*) malloc(4*sizeof(int));
+        }
+
+        //Iterating over all the elements To WRITE
+        for (int i =0; i <3 ; i++)
+        {
+
+            for (int j=0 ; j<4 ; j++)
+            {
+                Array_2D[i][j] = i*j;
+            }
+        }
+
+        //Iterating over all the elements To READ
+        for (int i =0; i <3 ; i++)
+        {
+
+            for (int j=0 ; j<4 ; j++)
+            {
+                printf( "%d" , Array_2D[i][j]);
+            }
+        }
+        // Don't forget to free the allocated memory
+        for (int i = 0; i < 3; i++)
+        {
+            free(Array_2D[i]);
         }
     }
-
-    //Iterating over all the elements To READ
-    for (int i =0; i <3 ; i++)
-    {
-
-        for (int j=0 ; j<4 ; j++)
-        {
-            printf( "%d" , Array_2D[i][j]);
-        }
-    }
-    // Don't forget to free the allocated memory
-    for (int i = 0; i < 3; i++)
-    {
-        free(Array_2D[i]);
-    }
-}
-
+    
+};
 
 
 
