@@ -48,13 +48,3 @@ int Binary_Search ()
     }
     
 }
-
-int main ()
-
-{
-
-
-    //Binary Search
-
-
-}

@@ -158,6 +158,7 @@
     <ClCompile Include="Array_Operations.cpp" />
     <ClCompile Include="CPP_College.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Stack.c" />
     <ClCompile Include="Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
