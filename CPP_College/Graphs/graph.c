@@ -31,6 +31,11 @@ struct Edge
 struct Graph* CreateGraph (int numVertices)
 {
     struct Graph* graph =  (struct Graph *)malloc ( sizeof(struct Graph));
+
+    //Allocate memory for the rows
+    int*Rows = malloc (numVertices*sizeof(int));
+
+     
 }
 
 int main()
