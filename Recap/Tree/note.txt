@@ -1,0 +1,33 @@
+
+node from height ?>>>
+
+if height =h the max number of node is 2^(h+1) -1
+if height =h the min number of node is h+1
+
+at level h the max node at that level is 2^h
+
+
+height from node ?>>>
+
+if max node is n then n = 2^(h+1) -1
+if we do calculation  h = log (n+1) -1
+
+if min nodes is n then n=h+1
+if we do calculation   h=n-1
+
+(if max nodes are gives then the height is minimun)
+(if min nodes are given then the height is maximum)
+
+
+
+?>>> Types of binary tree
+
+1. FULL/Proper /strict - 
+    if the tree contains either 0 or 2 leanodes
+
+    no of leaf nodes = number of internal nodes +1
+2. Complete binary -
+    all the level are completely filled (except possibly the last level the last level)
+    and if the last level shoul have children from left to right filled
+    it coluld have either one or two but it should fill from let to right
+    sometimes the hald filed leaf also called  NEARLY FILLED BINARY TREE
