@@ -69,6 +69,17 @@ void insert_at(int pos,node*head,node*newnode)
 
 }
 
+// it returns the last node
+node* traverse(node*head)
+{
+    node*temp =head;
+    while(temp->next)
+    {
+        temp=temp->next;
+    }
+    return temp;
+}
+
 
 
 int main()
