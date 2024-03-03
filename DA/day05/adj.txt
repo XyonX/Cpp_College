@@ -1,0 +1,16 @@
+6
+7
+AB
+AC
+AD
+BA
+BC
+BE
+CA
+CB
+DA
+DE
+DF
+EB
+ED
+FD
