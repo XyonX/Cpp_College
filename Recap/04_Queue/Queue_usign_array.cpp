@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct
 {
@@ -7,6 +8,26 @@ typedef struct
     int size;
 }queue;
 
+queue* create_queue(int size) {
+    queue *q = (queue *)malloc(sizeof(queue)); // Allocate memory for the queue
+    if (q == NULL) {
+        printf("Memory allocation failed.\n");
+        return NULL; // Return NULL if memory allocation fails
+    }
+    q->front = q->rear = -1;
+    q->size = size;
+    q->data = NULL; // Initialize data pointer to NULL
+    return q;
+}
+
+void destroy_queue(queue *q) {
+    if (q != NULL) {
+        if (q->data != NULL) {
+            free(q->data); // Free memory allocated for data array
+        }
+        free(q); // Free memory allocated for the queue itself
+    }
+}
 
 //is empty logic 
 // if the queue has both front and rear as -1
@@ -67,6 +88,10 @@ int dequeue( queue*q)
 int main()
 {
 
+    queue*q = create_queue(10);
+    printf(" queue size : %d",q->size);
+    enqueue(q,5);
+    printf("%d", dequeue(q));
 
 
     return 0;

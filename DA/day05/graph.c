@@ -2,11 +2,52 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+typedef struct _graph{
+
+    int** adjmatrix;
+    int numvertices;
+    int*visited;
+
+}graph;
+
+
 typedef struct {
-    int front, rear;
+    
     int *data;
+    int front;
+    int rear;
     int size;
 } queue;
+
+queue* create_queue(int size) {
+    queue *q = (queue *)malloc(sizeof(queue)); // Allocate memory for the queue
+    if (q == NULL) {
+        printf("Memory allocation failed.\n");
+        return NULL; // Return NULL if memory allocation fails
+    }
+    q->front= -1;
+    q->rear = -1;
+    q->size = size;
+    
+    q->data = (int *)malloc(size * sizeof(int)); // Allocate memory for data
+
+    if (q->data == NULL) {
+        printf("Memory allocation failed.\n");
+        free(q); // Free previously allocated memory
+        return NULL; // Return NULL if memory allocation fails
+    }
+
+    return q;
+}
+
+void destroy_queue(queue *q) {
+    if (q != NULL) {
+        if (q->data != NULL) {
+            free(q->data); // Free memory allocated for data array
+        }
+        free(q); // Free memory allocated for the queue itself
+    }
+}
 
 int is_empty(queue *q) {
     return q->front == -1 && q->rear == -1;
@@ -42,65 +83,47 @@ int dequeue(queue *q) {
     }
 }
 
-queue* create_queue(int size) {
-    queue *q = (queue *)malloc(sizeof(queue)); // Allocate memory for the queue
-    if (q == NULL) {
-        printf("Memory allocation failed.\n");
-        return NULL; // Return NULL if memory allocation fails
-    }
-    q->front = q->rear = -1;
-    q->size = size;
-    q->data = NULL; // Initialize data pointer to NULL
-    return q;
-}
-
-void destroy_queue(queue *q) {
-    if (q != NULL) {
-        if (q->data != NULL) {
-            free(q->data); // Free memory allocated for data array
-        }
-        free(q); // Free memory allocated for the queue itself
-    }
-}
 
 
 
-void bfs(int***adjmat,int numvertices)
+
+void bfs(graph* g)
 {
-
-    int firstvert = rand() % numvertices;
-    int*visited = (int*)malloc(numvertices*sizeof(int));
-    queue*q=create_queue(20);
+    printf("FAWF \n");
+    int firstvert = 1;
+    queue*q=create_queue(100);
     enqueue(q,firstvert);
-    visited[firstvert]=1;
+    g->visited[firstvert]=1;
+    printf("FAWF");
+    
     while(!is_empty(q))
     {
         int vert = dequeue(q);
         printf("%d ", vert); 
-        for(int i =0;i<numvertices;i++)
+        for(int i =0;i<g->numvertices;i++)
         {
-            if((*adjmat)[vert][i]==1 && visited[i] ==0)
+            if(g->adjmatrix[vert][i]==1 && g->visited[i] ==0)
             {
 
-                visited[i]=1;
+                g->visited[i]=1;
                 enqueue(q,i);
             }
         }
     }
-    free(visited);
+    free(g->visited);
 
 
 }
+
 
 int main()
 {
     FILE*fp;
     char filename[]="adj.txt";
-    char line[100];// assuming max lines is 100
+    char line[500];// assuming max lines is 100
     int counter =0;
-    int** adjmatrix;
     int numvertices, numedges;
-    int* visited;
+    graph* g =  (graph*)malloc(sizeof(graph));
 
     //opening the file
     fp =fopen(filename,"r");
@@ -111,18 +134,19 @@ int main()
     }
         // Read lines from the file until the end is reached
 
-    while (fgets(line, sizeof(line), fp)) {
+    while ( !feof(fp) && fgets(line, sizeof(line), fp)) {
+        printf("%d \n",counter);
 
         //the first line that conatins the number of vertices in the graph
         if(counter ==0 )
         {
             numvertices = atoi(line);
-            printf("This graph has : %d Vertices \n",numvertices);
-            adjmatrix= (int**)malloc(numvertices*sizeof(int));
-            for (int i = 0; i < numvertices; i++)
-            {
-                adjmatrix[i]=(int*) malloc(numvertices*sizeof(int));
-            }
+
+        // Creating the adj matrix based on the vertices data 
+        g->adjmatrix = (int**)malloc(numvertices * sizeof(int*));
+        for (int i = 0; i < numvertices; i++) {
+            g->adjmatrix[i] = (int*)malloc(numvertices * sizeof(int));
+        }
             counter++;
             continue;
         }
@@ -130,8 +154,6 @@ int main()
         if(counter ==1)
         {
             numedges= atoi(line);
-            printf("The graph contains : %d Edges \n", numedges);
-            printf("Adjacent edges are : \n");
             counter++;
             continue;
         }
@@ -141,16 +163,13 @@ int main()
         int vert_01 = line[0]-'A';
         int vert_02 = line[1]-'A';
 
-        printf(" %d%d  \n",vert_01,vert_02);
-
-        adjmatrix[vert_01][vert_02]=1;
+        g->adjmatrix[vert_01][vert_02]=1;
 
         counter++;
 
     }
-
-    bfs(&adjmatrix,numvertices);
-
+    printf("Test Message");
+    bfs(g);
     
 
 }
