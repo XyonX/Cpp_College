@@ -14,11 +14,11 @@ int main()
     
     int data[MAX_SIZE];
     int front = -1;
-    int rare =-1;
+    int rear =-1;
     
     int is_full ()
     {
-        return rare == MAX_SIZE-1;
+        return rear == MAX_SIZE-1;
     }
     int is_empty ()
     {
@@ -37,7 +37,7 @@ int main()
                 //increareament the front only this time
                 front =0;
             }
-            data[++rare] = value;
+            data[++rear] = value;
             
         }
         
@@ -50,11 +50,11 @@ int main()
         }
         else
         {
-            int item = data[rare];
-            if(front >= rare)
+            int item = data[rear];
+            if(front >= rear)
             {
                 front =-1;
-                rare=-1;
+                rear=-1;
             }
             else
             {
@@ -77,7 +77,7 @@ int main()
     }
     void Display ()
     {
-        for( int i = front ; i <= rare ; i++)
+        for( int i = front ; i <= rear ; i++)
         {
             printf(" Data at inde :%d is : %d \n", i,data[i]);
         }

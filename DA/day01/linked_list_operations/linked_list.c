@@ -24,7 +24,7 @@ void insert(LList* pLList, void* data, int pos)
     if(pos==0)
     {
         newnode->next=pLList;
-        pLList = newnode;
+        *pLList = *newnode;
     }
     else if (pos>0)
     {

@@ -3,38 +3,38 @@
 
 typedef struct
 {
-    int front,rare;
+    int front,rear;
     int*data;
     int size;
 }queue;
 
 
 //is empty logic 
-// if the queue has both front and rare as -1
+// if the queue has both front and rear as -1
 int is_empty(queue*q)
 {
-    return q->front==-1 && q->rare==-1 ;
+    return q->front==-1 && q->rear==-1 ;
 }
 
 // is full logic 
-// if theque has the rare == size-1
+// if theque has the rear == size-1
 int is_full(queue*q)
 {
-    return (q->rare+1)%q->size == q->front;
+    return (q->rear+1)%q->size == q->front;
 }
 
 //enque operator
 //2 checks before doing the direct data push 
 // is it empty or is it full
-/// if those two are not then simply increament rare and put the vale
+/// if those two are not then simply increament rear and put the vale
 
 int enqueue(queue*q,int data)
 {
    
     if (is_empty(q))
     {
-        q->front=q->rare=0;
-        q->data[q->rare]=data;
+        q->front=q->rear=0;
+        q->data[q->rear]=data;
     }
      else if(is_full(q))
     {
@@ -42,8 +42,8 @@ int enqueue(queue*q,int data)
     }
     else
     {
-        int loc = (q->rare+1)%q->size;
-        q->rare=loc;
+        int loc = (q->rear+1)%q->size;
+        q->rear=loc;
         q->data[loc]=data;
     }
     return 1;
@@ -58,9 +58,9 @@ int dequeue( queue*q)
     }
     
     //having one element
-    else if (q->front ==q->rare)
+    else if (q->front ==q->rear)
     {
-        q->front=q->rare=-1;
+        q->front=q->rear=-1;
         return q->data[q->front];
     }
     else
