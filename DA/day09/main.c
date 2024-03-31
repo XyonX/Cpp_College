@@ -28,13 +28,13 @@ void MAKESET(int s[], int size){
 //Find parnet of a node from parent array
 int FIND(int s[], int x)
 {
-    if(x=s[x])
+    if(x==s[x])
     {
         return x;
     }
     else
     {
-        FIND(s,x[s]);
+        return FIND(s,s[x]);
     }
 }
 
@@ -74,7 +74,7 @@ int main()
         int res = UNION(sets,s,d);
         numConComp-=res;
     }
-    printf("Total connected  Component is : %d",numConComp);
+    printf("Total connected  Component is  : %d \n",numConComp);
 }
     
  
